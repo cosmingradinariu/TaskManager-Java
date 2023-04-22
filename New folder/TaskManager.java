@@ -5,7 +5,7 @@ public class TaskManager {
     private ArrayList<Task> tasks = new ArrayList<>();
     
     void addTask(Task task) {
-        tasks.add(0, task);
+        tasks.add(task);
         System.out.println("You added "+ task);
         System.out.println(tasks);
     }
