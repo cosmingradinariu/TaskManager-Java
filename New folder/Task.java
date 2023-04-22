@@ -43,7 +43,7 @@ public class Task {
         return stateOfTask;
     }
 
-    public void setIsFinished(boolean finished) {
+    public void setFinished(boolean finished) {
         this.stateOfTask = finished;
     }
 

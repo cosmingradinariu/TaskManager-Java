@@ -6,17 +6,23 @@ public class TaskManager {
     
     void addTask(Task task) {
         tasks.add(0, task);
+        System.out.println("You added "+ task);
+        System.out.println(tasks);
     }
 
     void removeTask(Task task) {
         tasks.remove(task);
+        System.out.println("You removed " + task);
+        System.out.println(tasks);
     }
 
     void modifyTask(Task task, String name, String descritpion, String date, boolean finished) {
         task.setName(name);
         task.setDescription(descritpion);
         task.setDate(date);
-        task.setIsFinished(finished);
+        task.setFinished(finished);
+        System.out.println("You modified " + task);
+        System.out.println(tasks);
     }
 
     public String toString() {
