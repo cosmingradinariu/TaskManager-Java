@@ -1,47 +1,61 @@
-import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
 
-import java.awt.BorderLayout;
-import java.awt.GridLayout;
+import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class TaskGUI implements ActionListener{
 
-    private int count = 0;
-    private JButton button;
-    private JLabel label;
-    private JFrame frame;
-    private JPanel panel;
+/**
+ * TaskGUI
+ */
+public class TaskGUI extends JFrame implements ActionListener{
+    JButton addButton;
+    JButton modifyButton;
+    JButton removeButton;
+    TaskManager taskManager = new TaskManager();
+    Task task = new Task("cioromela", "cioromela", "azi", false);
     
+
     TaskGUI() {
 
-        frame = new JFrame();
-        button = new JButton("Add");
-        button.addActionListener(this);
+        addButton = new JButton("Add");
+        addButton.setBounds(200, 100, 100, 25);
+        addButton.addActionListener(this);
+        addButton.setFocusable(false);
 
-        label = new JLabel("Number of adds: 0");
+        modifyButton = new JButton("Edit");
+        modifyButton.setBounds(300, 100, 100, 25);
+        modifyButton.addActionListener(this);
+        modifyButton.setFocusable(false);
 
-        panel = new JPanel();
-        panel.setBorder(BorderFactory.createEmptyBorder(30, 30, 10, 30));
-        panel.setLayout(new GridLayout(0, 1));
-        panel.add(button);
-        panel.add(label);
 
-        frame.add(panel, BorderLayout.CENTER);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setTitle("TaskManager");
-        frame.pack();
-        frame.setVisible(true);
+        removeButton = new JButton("Remove");
+        removeButton.setBounds(400, 100, 100, 25);
+        removeButton.addActionListener(this);
+        removeButton.setFocusable(false);
 
+        
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setSize(500, 500);
+        this.setTitle("TaskManager");
+        this.setLayout(new FlowLayout());
+        this.add(addButton);
+        this.add(modifyButton);
+        this.add(removeButton);
+        
+        this.setVisible(true);
+        
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        count++;
-        label.setText("Number of adds: " + count);
+        if (e.getSource() == addButton) {
+            taskManager.addTask(task);
+        } else if (e.getSource() == modifyButton) {
+            taskManager.modifyTask(task, "cioromela", "nigger", "nigger", false);
+        } else {
+            taskManager.removeTask(task);
+        }
     }
 }
