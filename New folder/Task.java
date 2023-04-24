@@ -1,20 +1,30 @@
 
 
-public class Task {
+public abstract class Task {
 
+    private int idOfTask;
     private String nameOfTask;
     private String descriptionOfTask;
     private String dateOfTask;
     private boolean stateOfTask;
 
-    public Task(String name, String description, String date, boolean finished) {
+    public Task(int id, String name, String description, String date, boolean finished) {
         
+        this.idOfTask = id;
         this.nameOfTask = name;
         this.descriptionOfTask = description;
         this.dateOfTask = date;
         this.stateOfTask = finished;
     }
 
+    public int getId() {
+        return idOfTask;
+    }
+
+    public void setId(int id) {
+        this.idOfTask = id;
+    }
+    
     public String getName() {
         return nameOfTask;
     }
@@ -48,7 +58,7 @@ public class Task {
     }
 
     public String toString() {
-        return this.nameOfTask + " " + this.descriptionOfTask + " " + this.dateOfTask + " " + this.stateOfTask;
+        return this.idOfTask + " " + this.nameOfTask + " " + this.descriptionOfTask + " " + this.dateOfTask + " " + this.stateOfTask;
     }
 
 }

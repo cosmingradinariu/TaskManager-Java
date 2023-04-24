@@ -1,9 +1,11 @@
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 
 /**
@@ -14,7 +16,7 @@ public class TaskGUI extends JFrame implements ActionListener{
     JButton modifyButton;
     JButton removeButton;
     TaskManager taskManager = new TaskManager();
-    Task task = new Task("cioromela", "cioromela", "azi", false);
+    Task task;
     
 
     TaskGUI() {
@@ -51,11 +53,33 @@ public class TaskGUI extends JFrame implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == addButton) {
+            task.setId(Integer.parseInt(JOptionPane.showInputDialog("Enter the id for your task(starts at 0) ")));
+            task.setName(JOptionPane.showInputDialog("Enter the name for your task "));
+            task.setDescription(JOptionPane.showInputDialog("Enter the description of your task "));
+            task.setDate(JOptionPane.showInputDialog("Enter the date of your task "));
+            boolean answerBool = Boolean .parseBoolean(JOptionPane.showInputDialog("Is your task finished?(true or false) "));
+            task.setFinished(answerBool);
             taskManager.addTask(task);
         } else if (e.getSource() == modifyButton) {
-            taskManager.modifyTask(task, "cioromela", "nigger", "nigger", false);
+            int idModify = Integer.parseInt(JOptionPane.showInputDialog("Which task you want to modify? (0 is the first task) "));
+            String nameModify = JOptionPane.showInputDialog("Enter the name for your task ");
+            String descriptionModify = JOptionPane.showInputDialog("Enter the description of your task ");
+            String dateModify = JOptionPane.showInputDialog("Enter the date of your task ");
+            boolean finishedModify = Boolean .parseBoolean(JOptionPane.showInputDialog("Is your task finished?(true or false) "));
+            switch (idModify) {
+                case 0:
+                    taskManager.modifyTask(task, idModify, nameModify, descriptionModify, dateModify, finishedModify);
+                    break;
+            
+                case 1:
+                    taskManager.modifyTask(task, idModify, nameModify, descriptionModify, dateModify, finishedModify);
+                    break;
+                default:
+                    break;
+            }
         } else {
             taskManager.removeTask(task);
+            
         }
     }
 }

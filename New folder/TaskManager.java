@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class TaskManager {
+public class TaskManager extends ArrayList{
     
     private ArrayList<Task> tasks = new ArrayList<>();
     
@@ -16,8 +16,9 @@ public class TaskManager {
         System.out.println(tasks);
     }
 
-    void modifyTask(Task task, String name, String descritpion, String date, boolean finished) {
+    void modifyTask(Task task, int id, String name, String descritpion, String date, boolean finished) {
         System.out.println("You modified: " + task);
+        task.setId(id);
         task.setName(name);
         task.setDescription(descritpion);
         task.setDate(date);
