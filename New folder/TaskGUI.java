@@ -16,7 +16,7 @@ public class TaskGUI extends JFrame implements ActionListener{
     JButton modifyButton;
     JButton removeButton;
     TaskManager taskManager = new TaskManager();
-    Task task;
+    Task task = new Task(0, "da", "da", "da", false);
     
 
     TaskGUI() {

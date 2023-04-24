@@ -1,6 +1,6 @@
 
 
-public abstract class Task {
+public class Task {
 
     private int idOfTask;
     private String nameOfTask;
