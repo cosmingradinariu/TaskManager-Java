@@ -31,13 +31,11 @@ public class TaskGUI extends JFrame implements ActionListener{
         modifyButton.addActionListener(this);
         modifyButton.setFocusable(false);
 
-
         removeButton = new JButton("Remove");
         removeButton.setBounds(400, 100, 100, 25);
         removeButton.addActionListener(this);
         removeButton.setFocusable(false);
 
-        
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(500, 500);
         this.setTitle("TaskManager");
